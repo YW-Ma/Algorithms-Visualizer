@@ -1,0 +1,105 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    title
+    style(type='text/css').
+      html, body{
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      background: url(../images/bg.jpg);
+      background-size: 100% 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 微软雅黑    ,  "microsoft yahei";
+      }
+      #container{
+      width: 300px;
+      height: 300px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.6);
+      border-radius: 3px;
+      box-shadow: 10px 10px 20px rgba(100, 100, 100, 0.8);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      }
+      form{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      }
+      form input{
+      font-size: 16px;
+      border: none;
+      outline: none;
+      }
+      form>label, form>input{
+      height: 40px;
+      line-height: 40px;
+      }
+      form label{
+      width: 100%;
+      border-radius: 3px;
+      margin-bottom: 10px;
+      position: relative;
+      background-color: rgba(200, 200, 200, 1);
+      }
+      label input, label input:focus{
+      background-color: transparent;
+      margin-left: 50px;
+      }
+      label::before{
+      content: "";
+      display: block;
+      height: 28px;
+      width: 28px;
+      position: absolute;
+      left: 5px;
+      top: 50%;
+      margin-top: -14px;
+      }
+      label[for="username"]::before{
+      background-image: url(../images/用户.png);
+      background-size: 100% 100%;
+      }
+      label[for^="password"]::before{
+      background-image: url(../images/锁.png);
+      background-size: 100% 100%;
+      }
+      form input[type="submit"]{
+      border-radius: 20px;
+      width: 80%;
+      margin: 30px auto;
+      background-color: #332303;
+      color: white;
+      display: block;
+      }
+      form input[type="submit"]:active{
+      background-color: #222222;
+      }
+      a:link, a:visited, a:hover, a:active{
+      color: #332303;
+      text-decoration: none;
+      }
+  body
+    #container
+      form(method='POST')
+        label(for='username')
+          input#username(type='text', name='userid', value='', placeholder='输入用户名')
+        label(for='password1')
+          input#password(type='password', name='password1', value='', placeholder='输入密码')
+        label(for='password2')
+          input#password(type='password', name='password', value='', placeholder='确认密码')
+        input#submit(type='submit', value='注     册')
+script(src="../javascripts/jquery-3.1.1.min.js")
+script(src="../javascripts/layer/layer.js")
+script.
+  let info = !{JSON.stringify(info)};
+  if(info){
+    layer.msg(info);
+  }

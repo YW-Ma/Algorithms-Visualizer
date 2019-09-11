@@ -1,0 +1,11 @@
+void DFS(Graph& G, int v)
+ {
+	visited[v] = 1;
+	for (int w = FirstAdjVex(G, v); w != -1; w = NextAdjVex(G, v, w))
+	{
+		if (!visited[w])
+		{
+			DFS(G, w);
+		}
+	}
+}

@@ -1,0 +1,485 @@
+/*基本框架布局*/
+#container{
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: 0 0 0 0;
+    margin: 0;
+    display: flex;
+    flex-direction:row;
+}
+/*左边栏*/
+#sidebar{
+    position: relative;
+    width: 150px;
+    height: 100%;
+    padding: 0;
+    background-color: #FFF;
+    border-right: 1px solid #AAA;
+    box-shadow: 5px 0 9px #CCC;
+    transition: margin 0.3s ease;
+    z-index: 10;
+}
+/*地图栏*/
+#map{
+    height: 100%;
+    padding: 0;
+    background-color: white;
+    flex-grow: 1000;
+    transition: width 0.3s ease;
+}
+/*右边栏*/
+#panel{
+    position: relative;
+    width: 600px;
+    height: 100%;
+    margin-right: -600px;
+    padding: 0;
+    background-color: white;
+    border-right: 1px solid #AAA;
+    box-shadow: -5px 0 9px #CCC;
+    transition: margin 0.3s ease;
+}
+/*左右两栏的小开关*/
+.drawer{
+    position: absolute;
+    width: 10px;
+    height: 100px;
+    background-color: #999;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    margin-top: -50px;
+    top: 50%;
+    border-radius: 5px;
+}
+/*左边栏开关*/
+#sidebar .drawer{
+    border-left: 1px solid #AAA;
+    right: 0;
+    transition: right 0.3s ease;
+}
+/*右边栏开关*/
+#panel .drawer{
+    border-right: 1px solid #AAA;
+    left: -10px;
+    transition: left 0.3s ease;
+}
+/*左边栏的搜索*/
+#sidebar #search{
+    height: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    border-bottom: 1px solid #AAA;
+}
+#sidebar #search input{
+    display: block !important;
+    height: 100%;
+    flex-grow: 5;
+    width: 10px;
+    margin: 0;
+    padding: 0 5px 0 5px;
+    border: none;
+}
+#sidebar #search button{
+    display: block !important;
+    height: 100%;
+    width: 50px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+}
+/*删除菜单
+#sidebar #deleteMenu{
+    width: 50px;
+    height: 20px;
+    line-height: 20px;
+    border: 1px solid #AAA;
+    cursor: pointer;
+    display: none;
+    font-size: 12px;
+    text-align: center;
+}
+#sidebar #deleteMenu:hover{
+    background-color: #AAA;
+}*/
+/*左边栏 节点列表*/
+#nodeList{
+    display: block;
+}
+#nodeList>p{
+    padding: 5px;
+    margin: 0;
+    border-top: 1px solid #CCC;
+    font-size: 14px;
+    cursor: pointer;
+}
+#nodeList>p:hover{
+    background-color: #CCC;
+}
+#nodeList>p:nth-of-type(1){
+    border: none;
+}
+#algos{
+    height: 30px;
+    width: 100%;
+    margin: 0 0 2px 0;
+    padding: 0;
+    position: absolute;
+    bottom: 93px;
+    text-align: center;
+}
+#algos select{
+    width: 100%;
+}
+#algos select option{
+    width: 100%;
+}
+/*左边栏-确认*/
+#confirm{
+    height: 30px;
+    width: 100%;
+    margin: 0 0 2px 0;
+    padding: 0;
+    position: absolute;
+    bottom: 62px;
+}
+#confirm>button{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/*从此处进入报表系统*/
+#reports
+{
+    height: 30px;
+    width: 100%;
+    margin: 0 0 2px 0;
+    padding: 0;
+    position: absolute;
+    bottom: 31px;
+}
+#mlink{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+#mlink>button{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/*左边栏-按钮*/
+#info{
+    height: 30px;
+    width: 100%;
+    margin: 0 0 2px 0;
+    padding: 0;
+    position: absolute;
+    bottom: 0;
+}
+#info>button{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/*右边栏-结构图*/
+#panel #graph{
+    width: 100%;
+    height: 50%;
+    border-bottom: 1PX solid #AAA;
+}
+/*右边栏-图列表*/
+#panel #table{
+    width: 100%;
+    height: 100%;
+}
+
+
+/*右边栏-图列表-head*/
+
+#tab{
+    height: 30px;
+    margin-left: 10px;
+    border-bottom: 1px solid #AAA;
+}
+#tab>div{
+    width: 50px;
+    height: 100%;
+    line-height: 30px;
+    font-size: 13px;
+    text-align: center;
+    display: inline-block;
+    padding: 0;
+    margin:0;
+    background-color: #CCC;
+    cursor: pointer;
+}
+#tab>div:hover{
+    background-color: #AAA !important;
+}
+/*点*/
+#tab>div:nth-of-type(1){
+    border-right: 1px solid #AAA;
+}
+/*边*/
+#tab>div:nth-of-type(2){
+}
+#tabContent{
+    width: 100%;
+    height: 285px;        /*height设置成相对高度时overflow不起作用，尚未找到解决办法*/   
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    overflow: scroll;     /*overflow属性是用来规定当内容溢出元素框时发生的事情*/
+}
+#tabContent table{
+    border-width: 1px;
+    width: 100%;
+    border-color: #666666;
+}
+#tabContent table th{
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #999;
+}
+#tabContent table td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+}
+#tabContent table tbody {
+    
+}
+#tabContent table tbody tr {
+    cursor: default;
+	background-color: #FFF;
+}
+#tabContent table tbody tr:hover {
+	background-color: #DDD !important;
+}
+#tabContent table tbody tr td:nth-of-type(3):hover {
+    cursor: pointer;
+}
+
+/******************右边栏  图******************/
+
+#graphWrap{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+#main{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 50px;
+    background-color: #666666;
+}
+/*********************控制条-开始*********************/
+#tool{
+    width: 50%;
+    height: 30px;
+    position: absolute;
+    bottom: -31px;  /*bottom 属性规定元素的底部边缘。该属性定义了定位元素下外边距边界与其包含块下边界之间的偏移*/
+    right:0;       /*right 属性规定元素的右边缘。该属性定义了定位元素右外边距边界与其包含块右边界之间的偏移*/
+    background-color: gray;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+}
+#tool div{
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+#tool #speed{ /**/
+    display: inline-block;
+    height: 10px;
+    width: 60px;
+    cursor: pointer;
+    position: relative;
+    background-color: white;
+    float:left;
+}
+#tool #speed > #speedValue{
+    position: absolute;
+    width: 50%;
+    height: 10px;
+    background-color: black;
+    top: 0;
+    left: 0;
+}
+#tool #prev{
+    background-image: url(../assets/prev.png);
+    background-size: 100% 100%;
+}
+#tool #start.playState{
+    background-image: url(../assets/play.png);
+    background-size: 100% 100%;
+}
+#tool #start.pauseState{
+    background-image: url(../assets/pause.png);
+    background-size: 100% 100%;
+}
+#tool #end{
+    height: 16px;
+    width: 16px;
+    background-image: url(../assets/stop.png);
+    background-size: 100% 100%;
+}
+#tool #next{
+    background-image: url(../assets/next.png);
+    background-size: 100% 100%;
+}
+
+#tool #reset{
+    border-radius:1px;
+    background-image: url(../assets/reset.png);
+    background-size: 100% 100%;
+
+}
+/*********************控制条-结束*********************/
+
+svg g, svg circle, svg text {
+    transition: x 1s ease, y 1s ease, cx 1s ease, cy 1s ease !important;
+}
+
+
+/*修改layer*/
+.layui-layer-btn0{
+    background-color: #fff !important;
+    color: #333 !important;
+}
+
+.mymenu{
+    width: 80px;
+    background: white;
+    border: 1px solid gray;
+    display: none;
+    position: fixed;
+    z-index: 10;
+    text-align: center;
+    font-size: 13px;
+}
+.myitem{
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    background: #CCC;
+}
+#question{
+    font-size: 13px;
+    width: 50px !important;
+}
+
+
+
+
+/*************************************************************************************************/
+/*************************************************************************************************/
+/***********************************以下是repotrs的css文件******************************************/
+#reportsContainer{
+    height:100%;
+    width:100%;  
+}
+
+
+#headArea{
+    height:25%;
+    width:100%;
+    display:table;
+    /*background-color: #4f9d3c;*/
+}
+
+#headArea #userInfo{
+    height:50%;
+    width:20%;
+    float:left;
+    margin-top:10px;
+    margin-bottom:20px;
+    margin-left:20px;
+    margin-right:20px;
+    text-align:center;            /*文字水平居中*/
+    /*line-height:100px; */           /*line-height根据height设置垂直居中*/         
+    /*background-color: antiquewhite;*/
+}
+
+.infoBar{
+    font-family:courier;
+    font-size: 15px;
+}
+
+#retButton{
+    font-family:courier;
+    font-size:15px;
+    /*height:100%;*/
+    /*width:100%;*/
+    padding:0;
+    margin:0;
+    border:0;
+}
+
+#bodyArea
+{
+    height:100%;
+    width:100%;
+    /*background-color: aqua;*/
+}
+
+#bodyArea #mtable{
+    border:1;            /*为什么在css文件里边框不起作用，在html中才行?*/
+    position: absolute;
+    width:80%;
+    left:10%;
+    right:10%;
+    /*height:100%;*/      /*不能设置高度，应该由内容撑开*/
+    /*background-color: cadetblue;*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*testttttt*/
+#testColor{
+    color:#66FF66;
+    color:#0a0a0a;
+    color:#5B9BD5;
+    color:#FF0000;
+    color:#000000;
+    color:#0a0a0a;
+    color:#5B9BD5;
+    color:#3C9;
+}
