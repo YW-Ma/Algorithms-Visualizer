@@ -6,7 +6,7 @@ Online Demonstration Platform
 ----
 [Visualization Platform](http://39.108.177.106/)
 
-Steps to Use
+Usage
 -----
 1. Registration
 2. Login
