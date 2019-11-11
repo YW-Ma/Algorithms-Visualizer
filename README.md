@@ -30,3 +30,4 @@ Meanings
   * Help users understands the relation of the algorithm with other algorithms that can solve the same or related problems by exeuting different algorithms and demonstrate them in a unified UI
   * Simultaneously display the pseudo code and the analysis of the current step while demonstrating the algorithm
   * Demonstrate the algorithm step by step.
+![](https://github.com/YW-Ma/Algorithms-Visualizer/blob/master/Images/architecture.jpg)
