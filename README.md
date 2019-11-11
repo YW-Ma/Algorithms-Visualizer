@@ -12,9 +12,9 @@ Steps to Use
 2. Login
 3. Search & Select the locations you interested in
 4. Select an algorithm and right click the vertex of the abstract graph to select special vertex(e.g. starting vertex)
-5. Left click the 'Confirm' ('确定') button, and watch the demonstration.
+5. Left click the `Confirm` (`确定`) button, and watch the demonstration.
 6. Answer questions during the demonstration, use control panel to adjust it
-7. Use the 'Report' function to review your learning history
+7. Use the `Report` function to review your learning history
 
 
 Meanings
