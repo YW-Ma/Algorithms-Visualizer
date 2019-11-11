@@ -15,6 +15,7 @@ Steps to Use
 5. Left click the `Confirm` (`确定`) button, and watch the demonstration.
 6. Answer questions during the demonstration, use control panel to adjust it
 7. Use the `Report` function to review your learning history
+8. Contact me if you have questions. [e-mail: ma_yaowei@yahoo.com]
 
 
 Meanings
