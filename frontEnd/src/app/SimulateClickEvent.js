@@ -62,7 +62,7 @@ function addCity(val,index,length)                  //添加结点并渲染边
                 $("#node_成都市").contextmenu();
                 alert("执行了右击");
             });*/
-            window.layer.msg("加载完成后，右键选择起点："+start,{time:300000});
+            window.layer.msg("After loading data，choose the origin:"+start,{time:300000});
             setTimeout(()=>{                                                 //删除部分边
                 window.layer.load(1, {shade: [0.2,'#fff']});
                 $("#edge").click();

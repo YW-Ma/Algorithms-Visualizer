@@ -26,11 +26,11 @@ class GraphTable extends React.Component{
         return ( 
             <div style={{width: '100%', height:'100%'}}>
                 <div id="tab">
-                    <div style={{backgroundColor:this.state.tab===1?"#999":"#CCC"}} onClick={this.setPTab.bind(this)}>顶点</div>
-                    <div style={{backgroundColor:this.state.tab===2?"#999":"#CCC"}} id="edge" onClick={this.setLTab.bind(this)}>边</div>
-                    <div style={{backgroundColor:this.state.tab===3?"#999":"#CCC"}} onClick={this.setMatrixTab.bind(this)}>矩阵</div>
-                    <div style={{backgroundColor:this.state.tab===4?"#999":"#CCC"}} onClick={this.setCodeTab.bind(this)}>代码</div>
-                    <div style={{backgroundColor:this.state.tab===5?"#999":"#CCC"}} onClick={this.setActionTab.bind(this)}>动作</div>
+                    <div style={{backgroundColor:this.state.tab===1?"#999":"#CCC"}} onClick={this.setPTab.bind(this)}>Vertex</div>
+                    <div style={{backgroundColor:this.state.tab===2?"#999":"#CCC"}} id="edge" onClick={this.setLTab.bind(this)}>Edge</div>
+                    <div style={{backgroundColor:this.state.tab===3?"#999":"#CCC"}} onClick={this.setMatrixTab.bind(this)}>Matrix</div>
+                    <div style={{backgroundColor:this.state.tab===4?"#999":"#CCC"}} onClick={this.setCodeTab.bind(this)}>Codes</div>
+                    <div style={{backgroundColor:this.state.tab===5?"#999":"#CCC"}} onClick={this.setActionTab.bind(this)}>Steps</div>
                 </div>
                 <div id="tabContent">{content}</div>
             </div>
@@ -128,9 +128,9 @@ class GraphTable extends React.Component{
             <table>
                 <thead>
                     <tr>
-                        <th>地点</th>
-                        <th>经度</th>
-                        <th>纬度</th>
+                        <th>VertexName</th>
+                        <th>Longitude</th>
+                        <th>Latitude</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -158,9 +158,9 @@ class GraphTable extends React.Component{
             <table>
                 <thead>
                     <tr>
-                        <th>路线</th>
-                        <th>距离</th>
-                        <th>选择</th>
+                        <th>Route</th>
+                        <th>Distance</th>
+                        <th>Select (Y/N)</th>
                     </tr> 
                 </thead>
                 <tbody>

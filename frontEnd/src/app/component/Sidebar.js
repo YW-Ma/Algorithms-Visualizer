@@ -37,14 +37,14 @@ class Sidebar extends React.Component{
 		});
 		let algoDOM = window.algos.map((v, index)=>{
 			//if(index===0)window.algo = v;   注销此句，否则window.algo始终是window.algos的第一个算法
-			return <option key={"algo_"+v} value={v}>{v+"算法"}</option>;
+			return <option key={"algo_"+v} value={v}>{v+" Algo"}</option>;
 		});
 
         return (
             <div id="sidebar" style={{marginLeft: this.state.marginLeft+"px"}}>
                 <div id="search">
 						<input type="text" id="input" value={this.state.search} onChange={this.inputChange.bind(this)}/>
-						<button id="searchOK" onClick={this.searchClick.bind(this)}>查询</button>
+						<button id="searchOK" onClick={this.searchClick.bind(this)}>Query</button>
 				</div>
 				<div id="nodeList">
                         {nodes}
@@ -55,16 +55,16 @@ class Sidebar extends React.Component{
 						</select>
 					</div>
 				<div id="confirm">
-						<button id="confirmBtn" onClick={this.confirmClick.bind(this)}>确定</button>
+						<button id="confirmBtn" onClick={this.confirmClick.bind(this)}>Confirm</button>
 					</div>
 				<div id="reports">
 					<Link id="mlink" to="reports">
-					<button onClick={()=>{}}>报表</button>
+					<button onClick={()=>{}}>Reports</button>
 					</Link>
 						
 					</div>
 				<div id="info">
-						<button >退出</button>
+						<button >Exit</button>
 					</div>
                 <div className="drawer" style={{right: this.state.right+"px"}} onClick={this.close.bind(this)}></div>
             </div>
@@ -136,7 +136,7 @@ class Sidebar extends React.Component{
 		let that = this;
 		let menu = new MyMenu("MyMenu_Node");
 		menu.append([{
-			label: '移除',
+			label: 'Remove',
 			click: function(){
                 let nodes = that.props.node;
                 let index = nodes.findIndex(n=>{

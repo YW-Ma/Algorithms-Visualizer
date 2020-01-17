@@ -14,16 +14,16 @@ class Map extends React.Component{
 	    let map = new BMap.Map("map");
 		window.map = map;  //commented by me
 		// 创建点坐标  
-		let point = new BMap.Point(111.539334, 30.47691);
+		let point = new BMap.Point(114.3576, 30.5289);
 		// 初始化地图，设置中心点坐标和地图级别 
-		map.centerAndZoom(point, 5);
+		map.centerAndZoom(point, 13);
 		//开启鼠标滚轮缩放
 		map.enableScrollWheelZoom(true);
 		map.addControl(new BMap.NavigationControl());    
 		map.addControl(new BMap.ScaleControl());    
 		map.addControl(new BMap.OverviewMapControl());    
 		map.addControl(new BMap.MapTypeControl());    
-		map.setCurrentCity("武汉");
+		map.setCurrentCity("大学");
 		let localSearch = new BMap.LocalSearch(map, {
 			renderOptions: {map: map,panel: "results"},
 			onInfoHtmlSet: this.onInfoHtmlSet.bind(this) //如何获得参数的??
@@ -46,7 +46,7 @@ class Map extends React.Component{
 
 		if(node.querySelectorAll("button").length<=0){
 			let btn = document.createElement("button");
-			let str = document.createTextNode("添加");
+			let str = document.createTextNode("Add");
 			btn.className = "add";
 			btn.id="addCity";
 			btn.appendChild(str); 

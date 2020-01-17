@@ -15,7 +15,5 @@ const MyRoute=()=>(
 );   
 
 
-
-
 export default MyRoute;
 

@@ -292,7 +292,7 @@
 }
 /*********************控制条-开始*********************/
 #tool{
-    width: 50%;
+    width: 57%;
     height: 30px;
     position: absolute;
     bottom: -31px;  /*bottom 属性规定元素的底部边缘。该属性定义了定位元素下外边距边界与其包含块下边界之间的偏移*/
@@ -389,7 +389,7 @@ svg g, svg circle, svg text {
 }
 #question{
     font-size: 13px;
-    width: 50px !important;
+    width: 65px !important;
 }
 
 
@@ -477,7 +477,7 @@ svg g, svg circle, svg text {
     color:#66FF66;
     color:#0a0a0a;
     color:#5B9BD5;
-    color:#FF0000;
+    color:#FF5555;
     color:#000000;
     color:#0a0a0a;
     color:#5B9BD5;

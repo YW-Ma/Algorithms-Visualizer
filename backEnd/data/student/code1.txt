@@ -1,0 +1,28 @@
+Ver* Grap = new Ver[nver];//never表示节点数
+int* Path = new int[MAX];
+for (int i = 0; i < nver; i++)//邻接表的指针初始化为空
+{
+     Grap[i].firstArc = NULL;
+     Grap[i].lastArc = NULL;
+ }
+ for (int i = 0; i < MAX; i++)//对路径初始化
+       Path[i] = -1;
+ bool* Visited = new bool[nver];
+ float* Dist = new float[nver];
+	for (int i = 0; i< nver; i++)
+{
+      Visited[i] = 0;
+      Dist[i] = INFINITY;//初始化每个点到起点的距离为无穷
+}
+int loc_start = FindNodeNumber(Grap, start, nver);//找到起点在邻接表中的下标
+int loc_ArcTemp;
+	Arc* ArcTemp = Grap[loc_start].firstArc;
+	while (ArcTemp)
+{
+     loc_ArcTemp = FindNodeNumber(Grap, ArcTemp->city, nver);
+     Dist[loc_ArcTemp] = ArcTemp->weight;//与起点相连的点的权初始化
+     Path[loc_ArcTemp] = loc_start;//与起点相连点经过上一点为start
+     ArcTemp = ArcTemp->pNext;
+}
+Dist[loc_start] = 0;//起点到起点的距离为0
+Visited[loc_start] = 1;//起点被选中

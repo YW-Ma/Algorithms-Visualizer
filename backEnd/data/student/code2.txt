@@ -1,0 +1,9 @@
+for (int w = 0; w <nver; w++)
+{
+       if (!Visited[w])
+            if (Dist[w] < min)
+            {
+                v = w;
+                min = Dist[w];
+             }
+Visited[v] = 1;//选中

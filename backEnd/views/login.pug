@@ -90,15 +90,15 @@ html
     #container
       form(method='POST')
         label(for='username')
-          input#username(type='text', name='userid', value='', placeholder='用户名')
+          input#username(type='text', name='userid', value='', placeholder='Username')
         label(for='password')
-          input#password(type='password', name='password', value='', placeholder='密码')
-        input#submit(type='submit', value='登     录')
-        a(href='/users/reg') 注册
+          input#password(type='password', name='password', value='', placeholder='Password')
+        input#submit(type='submit', value='Log In')
+        a(href='/users/reg') Register
 script(src="../javascripts/jquery-3.1.1.min.js")
 script(src="../javascripts/layer/layer.js")
 script.
   let info = !{JSON.stringify(info)};
   if(info === 'fail'){
-    layer.msg("登录失败");
+    layer.msg("Fail to login");
   }

@@ -25,7 +25,7 @@ html
       if(!userid){
         document.querySelector('#info').style.display = "none";
       }else{
-        document.querySelector('#info>button').innerText = "退出:"+userid;
+        document.querySelector('#info>button').innerText = "Exit:"+userid;
         document.querySelector('#info>button').onclick = function(){
           location.href = "/users/logout";
         };

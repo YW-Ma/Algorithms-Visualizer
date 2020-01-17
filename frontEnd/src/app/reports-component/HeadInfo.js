@@ -11,19 +11,19 @@ class HeadInfo extends React.Component{
         return(
             <div id="headArea">
                 <div id="userInfo">
-                    <label className="infoBar">用户名:</label>
+                    <label className="infoBar">Username:</label>
                     <label className='infoBar'>{username}</label>
                     <br/>
-                    <label className="infoBar">时间:</label>
+                    <label className="infoBar">Date:</label>
                     <Clock />
                     <br/>
-                    <label className="infoBar">内容：</label>
+                    <label className="infoBar">Content: </label>
                     <select id="contentType" onChange={this.onSelectChange.bind(this)}>
-                        <option value ="action">动作</option>
-                        <option value ="que">问题</option>
+                        <option value ="action">Animations</option>
+                        <option value ="que">Quiz</option>
                     </select>
                     <br/>
-                    <Link className="infoBar" to={{pathname:'/',state:{panel:'open'}}}><button id="retButton">返回主界面</button></Link>
+                    <Link className="infoBar" to={{pathname:'/',state:{panel:'open'}}}><button id="retButton">Back to main page</button></Link>
                 </div>
             </div>
         );

@@ -20,7 +20,7 @@ let _name = [];     //存储点名
 //let STEP_COUNT = 0;　　　//学长以STEP_COUNT记录每一个动作的编号（是动作不是帧！！）->改为每一帧的编号
 let actionStep={};        //用于存储步骤动作信息,eg:   {3:[3,4,5,6]}表示第三帧包含动作3、4、５、６
 let STEP_COUNT=1;         //全局记录当前演示的帧数
-window.question = true;
+window.question = false;
 
 class GraphSVG extends React.Component{
     //其属性来自Panel...this.pros的传递,包括updtaState、node、link
@@ -33,10 +33,10 @@ class GraphSVG extends React.Component{
         //DJ后台传递颜色:初始化边（１０，１０，１０），初始化点（９１，１５５，２１３），
 
         this.DEFAULT_LINK_COLOR = "#3a6bdb";  //默认是(浅蓝色)
-        this.INITIAL_LINK_COLOR = "#0a0a0a";   //初始化后边的颜色
+        this.INITIAL_LINK_COLOR = "#0a0a0a";  //初始化后边的颜色
         this.INITIAL_NODE_COLOR = "#5B9BD5";  //初始化后点的颜色
-        this.SELECTED_LINK_COLOR = "#ff0000";   //选中的边，红色
-        this.SELECTED_NODE_COLOR = "#ff0000";   //选中的点     
+        this.SELECTED_LINK_COLOR = "#ff4444";   //选中的边，红色
+        this.SELECTED_NODE_COLOR = "#ff4444";   //选中的点     
        
         //this.path = null;
 
@@ -46,7 +46,7 @@ class GraphSVG extends React.Component{
         this.state.end = "";
         this.state.S_NODE = new Map(); //更新点的颜色;　　　　　　　　　Map是一组键值对的结构，具有极快的查找速度(误以为是Map.js导出的Map类)
         this.state.S_EDGE = new Map();  //更新边的距离
-        this.state.question= true;
+        this.state.question= false;
         this.state.S_NODE_DIS=new Map(); //更新点到起点的距离
         this.state.S_NODE_INFO=new Map(); //更新点旁边的其他信息，如显示不等式
     }
@@ -69,7 +69,7 @@ class GraphSVG extends React.Component{
                     </div>
                 </div>
                 <div id="tool">
-                    <div id="question"> 提问 <input id="question_checkbox" type="checkbox" checked={this.state.question} onChange={this.checkChange.bind(this)}/> </div>
+                    <div id="question"> Quiz <input id="question_checkbox" type="checkbox" checked={this.state.question} onChange={this.checkChange.bind(this)}/> </div>
                     <div id="speed" title="速度" onClick={this.changeSpeed.bind(this)}>
                         <div id="speedValue" style={{width: this.state.speed*100+"%"}}></div>
                     </div>
@@ -90,7 +90,7 @@ class GraphSVG extends React.Component{
         _name = [];     //存储点名
         actionStep={};        //用于存储步骤动作信息,eg:   {3:[3,4,5,6]}表示第三帧包含动作3、4、５、６
         STEP_COUNT=1;         //全局记录当前演示的帧数
-        window.question = true;
+        window.question = false;
 
         this.resetColor();
 
@@ -100,7 +100,7 @@ class GraphSVG extends React.Component{
         this.state.end = "";
         this.state.S_NODE = new Map(); //更新点的颜色;　　　　　　　　　Map是一组键值对的结构，具有极快的查找速度(误以为是Map.js导出的Map类)
         this.state.S_EDGE = new Map();  //更新边的距离
-        this.state.question= true;
+        this.state.question= false;
         this.state.S_NODE_DIS=new Map(); //更新点到起点的距离
         this.state.S_NODE_INFO=new Map(); //更新点旁边的其他信息，如显示不等式
     }
@@ -246,7 +246,7 @@ class GraphSVG extends React.Component{
         actionStep.STEP_COUNT = 1;
         this.setState({play: "stop", start: "", end: ""});
          /* global layer */
-        layer.msg("结束");
+        layer.msg("Results");
     }
 
     //消息发布，用于组件间传递代码信息!
@@ -350,7 +350,7 @@ class GraphSVG extends React.Component{
             },
             error: function(){
                 layer.closeAll();
-                layer.msg("出错, 提交失败");
+                layer.msg("出错, 提交失败"); // 2019.1.17 放置在服务器端后，SVG上的交互会出错。
             }
         });
 //////////////////////////////////////////////////////
@@ -547,7 +547,7 @@ class GraphSVG extends React.Component{
             case "(10,10,10))": return this.INITIAL_LINK_COLOR;   //初始化边（接近黑色）
             case "(91,155,213))": return this.INITIAL_NODE_COLOR; //初始化点（接近蓝色)
             case "(255,0,0))": return this.SELECTED_LINK_COLOR;    //选中点、边（红色）
-            default: return "#000000";
+            default: return "#222222";
         }
     }
 
@@ -602,12 +602,12 @@ class GraphSVG extends React.Component{
 		menu.popup(event.clientX, event.clientY);*/
 		let menu = new MyMenu("MyMenu_Node_SVG");
 		menu.append([{
-			label: '设为起点',
+			label: 'Origin',
 			click: function(){
                 that.setState({start: name});
 			}
         },{
-			label: '设为终点',
+			label: 'Destination',
 			click: function(){
                 that.setState({end: name});
 			}
@@ -650,12 +650,12 @@ class GraphSVG extends React.Component{
             });
            }
             if(text!=msg){
-                window.layer.msg('正确答案：'+msg, {time: 1000});
+                window.layer.msg('Oops, incorrect. Answer should be: '+msg, {time: 1000});
                 setTimeout(()=>{
                     that.animate();
                 }, 1100);
             }else{
-                window.layer.msg('答对了！', {time: 1000});
+                window.layer.msg('Correct!', {time: 1000});
                 that.animate();
             }
         } );
@@ -926,10 +926,10 @@ class Node extends React.Component{
     render(){
         return (
             <g id={"node_"+this.props.name} onContextMenu={this.props.setSE}>
-                <circle id={"node_circle_"+this.props.name} cx={this.props.x} cy={this.props.y} r={this.props.r || 20} fill={this.props.color ||　this.DEFAULT_COLOR}></circle>
-                <text id={"node_text_"+this.props.name} x={this.props.x} y={this.props.y} fill="black" textAnchor="middle" dominantBaseline="middle" style={{fontSize: "13px"}}>{this.props.hide || this.props.name}</text>
-                <text id={"node_value"+this.props.name} x={this.props.x} y={this.props.y+10} fill="black" textAnchor="middle" dominantBaseline="middle" fontSize='13px' fill='blue'>{this.props.distance}</text>
-                <text id={"node_value"+this.props.name} x={this.props.x+40} y={this.props.y-5} fill="black" textAnchor="middle" dominantBaseline="middle" fontSize='13px' fill='black'>{this.props.info}</text>
+                <circle id={"node_circle_"+this.props.name} cx={this.props.x} cy={this.props.y} r={this.props.r || 27} fill={this.props.color ||　this.DEFAULT_COLOR}></circle>
+                <text id={"node_text_"+this.props.name} x={this.props.x} y={this.props.y} fill="black" textAnchor="middle" dominantBaseline="middle" fontSize="14px" fill='black'>{this.props.hide || this.props.name}</text>
+                <text id={"node_value"+this.props.name} x={this.props.x} y={this.props.y+15} fill="black" textAnchor="middle" dominantBaseline="middle" fontSize='14px' fill='blue'>{this.props.distance}</text>
+                <text id={"node_value"+this.props.name} x={this.props.x+40} y={this.props.y-29} fill="black" textAnchor="middle" dominantBaseline="middle" fontSize='14px' fill='black'>{this.props.info}</text>
             </g>
         );
     }
@@ -952,7 +952,7 @@ class Link extends React.Component{
          return (
             <g id={"link_"+this.props.from+"_"+this.props.to}>
                  <line x1={this.props.x1} y1={this.props.y1} x2={this.props.x2} y2={this.props.y2} stroke={this.props.color} strokeWidth="5" style={{cursor: "pointer"}} onMouseEnter={this.hover.bind(this)} onMouseLeave={this.hover.bind(this)}/>
-                 <text x={(this.props.x1+this.props.x2)/2} y={(this.props.y1+this.props.y2)/2}  style={{fontSize:"15px"}}>{this.props.distance}</text>
+                 <text x={(this.props.x1+this.props.x2)/2 -9} y={(this.props.y1+this.props.y2)/2 -9} fontSize="15px" fill='blue'>{this.props.distance}</text>
              </g>
         );
     }

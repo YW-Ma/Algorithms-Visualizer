@@ -84,10 +84,10 @@ class BodyInfo extends React.Component{
             <table id="mtable" border="1">
             <thead>
                 <tr>
-                    <th>访问序号</th>
-                    <th>算法</th>
-                    <th>展开/收起</th>
-                    <th>场景再现</th>
+                    <th>ID</th>
+                    <th>Algorithm</th>
+                    <th>Fold/Unfold</th>
+                    <th>Re-Do</th>
                 </tr>
             </thead>
            
@@ -116,9 +116,9 @@ class BodyInfo extends React.Component{
         });
 
         let quesContent=ques.map((que,index)=>{
-            var judge="正确";
+            var judge="Correct";
             if(que.msg!=que.ans)
-                judge="错误";
+                judge="Incorrect";
             return(
                 <tr key={index}>
                     <td>{que.id}</td>
@@ -137,14 +137,14 @@ class BodyInfo extends React.Component{
             <table id="mtable" border="1">
                 <thead>
                     <tr>
-                        <th>序号</th>
-                        <th>类型</th>
-                        <th>问题</th>
-                        <th>回答</th>
-                        <th>答案</th>
-                        <th>正误</th>
-                        <th>访问号</th>
-                        <th>情景再现</th>
+                        <th>ID</th>
+                        <th>Type</th>
+                        <th>Question</th>
+                        <th>Answer</th>
+                        <th>Key</th>
+                        <th>Judgement</th>
+                        <th>VisitID</th>
+                        <th>Re-Do</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -169,9 +169,9 @@ class ButtonSpread extends React.Component{
     }
 
     render(){
-        let text="展开";
+        let text="Unfold";
         if(this.state.isSpreaded)
-            text="收起";
+            text="Fold";
         return(
             <button onClick={this.onClickButton.bind(this)}>{text}</button>
         );
